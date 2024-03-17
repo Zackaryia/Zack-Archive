@@ -26,7 +26,7 @@
                 "jsonOptions": { "type": "ref", "ref": "#jsonOptions"},
                 "formatJson": {
                     "type": "string",
-                    "discription": "The format information of the file at hand, directly from YT-DLP with the only difference being that the URL fields are replaced with \"[REDACTED]\""
+                    "description": "The format information of the file at hand, directly from YT-DLP with the only difference being that the URL fields are replaced with \"[REDACTED]\""
                 }
             }
         },
