@@ -1,0 +1,63 @@
+
+{
+    "lexicon": 1,
+    "id": "com.zackaryia.atp.zs.alpha.content.archive",
+    "defs": {
+        "main": {
+            "type": "record",
+            "description": "A Zettabyte Safe Archive.",
+            "key": "tid",
+
+            "record": {
+                "type": "object",
+                "required": ["retrievalInfo", "contentData"],
+
+                "properties": {
+                    "retrievalInfo": {
+                        "type": "ref",
+                        "ref": "#retrievalInfo"
+                    },
+
+                    "metadata": { "type": "ref", "ref": "#metadata" },
+                    
+                    "contentData": {
+                        "type": "union",
+                        "refs": ["com.zackaryia.atp.zs.alpha.content.youtube.video"]
+                    }
+                }
+            }
+        },
+        "metadata": { 
+            "type": "object",
+            "description": "A key value dictionary of info about the archive",
+            "required": ["uri", "platform", "content_type", "id"],
+            "properties": {
+                "uri": { "type": "string", "format": "uri" },
+                "platform": { "type": "string" },
+                "content_type": { "type": "string" },
+                "id": { "type": "string" },
+                
+                "title": { "type": "string" },
+                "description": { "type": "string" },
+
+                "author": { "type": "string" },
+                "author_id": { "type": "string" }
+            }
+        },
+
+        "retrievalInfo": { 
+            "type": "object",
+            "description": "A Zettabyte Safe Archive of a peice of media. Includes metadata of the archive and the archived content itself. This is Version 1 of the archive, inorder to allow hard schema changes.",
+            "required": ["retrievalTime", "zettabyteSafeVersion", "programUsed"],
+
+            "properties": {
+                "retrievalTime": {
+                    "type": "string",
+                    "format": "datetime",
+                    "description": "The general time the archive of the content took place."
+                },
+                "zettabyteSafeVersion": { "type": "integer" }
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+old
+
+
+# Added by cargo
+
+/target
+/src
+/zack-archive
+Cargo.lock
+Cargo.toml
+/atrium
+/atproto_py
+/atproto_official
+_ignore_*
+
+
+readme.md
