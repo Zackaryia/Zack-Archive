@@ -23,7 +23,7 @@
 
             "properties": {
                 "content": { "type": "ref", "ref": "com.zackaryia.atp.zs.alpha.content.defs#file" },
-                "jsonOptions": { "type": "ref", "ref": "#jsonOptions"},
+                "jsonOptions": { "type": "ref", "ref": "#jsonOptions", "description": "FooBar" },
                 "formatJson": {
                     "type": "string",
                     "description": "The format information of the file at hand, directly from YT-DLP with the only difference being that the URL fields are replaced with \"[REDACTED]\""
