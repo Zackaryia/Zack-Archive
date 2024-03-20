@@ -3,15 +3,11 @@ old
 
 # Added by cargo
 
-/target
-/src
-/zack-archive
-Cargo.lock
-Cargo.toml
-/atrium
-/atproto_py
-/atproto_official
 _ignore_*
+/debug
+/data
+settings.json
 
+__pycache__
 
 readme.md

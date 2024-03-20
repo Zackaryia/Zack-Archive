@@ -5,12 +5,12 @@
     "defs": {
         "main": {
             "type": "record",
-            "description": "A Zettabyte Safe Archive.",
+            "description": "A Zack Archive.",
             "key": "tid",
 
             "record": {
                 "type": "object",
-                "required": ["retrievalInfo", "contentData"],
+                "required": ["retrievalInfo", "content", "metadata", "contentData"],
 
                 "properties": {
                     "retrievalInfo": {
@@ -18,45 +18,84 @@
                         "ref": "#retrievalInfo"
                     },
 
+                    "contentId": {
+                        "type": "ref",
+                        "ref": "#contentId"
+                    },
+
                     "metadata": { "type": "ref", "ref": "#metadata" },
-                    
-                    "contentData": {
-                        "type": "union",
-                        "refs": ["com.zackaryia.atp.zs.alpha.content.youtube.video"]
+
+                    "archiveFolder": {
+                        "type": "ref",
+                        "refs": "com.zackaryia.atp.zs.alpha.content.defs#folder"
                     }
                 }
             }
         },
-        "metadata": { 
+
+        "contentId": {
             "type": "object",
-            "description": "A key value dictionary of info about the archive",
-            "required": ["uri", "platform", "content_type", "id"],
+            "description": "The identifying information about a piece of content",
+            "required": [],
             "properties": {
                 "uri": { "type": "string", "format": "uri" },
-                "platform": { "type": "string" },
-                "content_type": { "type": "string" },
-                "id": { "type": "string" },
+                "platform": { "type": "string", "format": "uri", "description": "The platform archived. maybe switch to token enum" },
+                "contentType": { "type": "string", "format": "uri", "description": "The type of content archived, EX: Video, Blog, Book, Etc. maybe switch to token enum" },
                 
+                "id": { "type": "string" },
+                "authorId": { "type": "string" }
+            }
+        },
+
+        "metadata": {
+            "type": "object",
+            "description": "A key value dictionary of info about the archive",
+            "properties": {
                 "title": { "type": "string" },
                 "description": { "type": "string" },
 
-                "author": { "type": "string" },
-                "author_id": { "type": "string" }
+                "durationSeconds": { "type": "integer", "description": "the length of a peice of content in seconds." },
+                "timestampSeconds": { "type": "integer", "description": "the epoch a piece of content was published." },
+
+                "stats": { "type": "ref", "ref": "#stats" }
+            }
+        },
+
+        "stats": {
+            "type": "object",
+            "description": "The agregated statistics about a peice of content like its views, likes, comments, etc.",
+            "properties": {
+                "views": { "type": "integer" },
+                "likes": { "type": "integer" }
             }
         },
 
         "retrievalInfo": { 
             "type": "object",
-            "description": "A Zettabyte Safe Archive of a peice of media. Includes metadata of the archive and the archived content itself. This is Version 1 of the archive, inorder to allow hard schema changes.",
-            "required": ["retrievalTime", "zettabyteSafeVersion", "programUsed"],
+            "description": "The metadata about how a Zack Archive was collected, includes program versions, options used, and anything else relevent.",
+            "required": ["startTime", "zaVersion", "programUsed"],
 
             "properties": {
-                "retrievalTime": {
+                "startTime": {
                     "type": "string",
                     "format": "datetime",
-                    "description": "The general time the archive of the content took place."
+                    "description": "The start time the of the archive."
                 },
-                "zettabyteSafeVersion": { "type": "integer" }
+
+                "endTime": {
+                    "type": "string",
+                    "format": "datetime",
+                    "description": "The end time the of the archive."
+                },
+
+                "zaVersion": { "type": "string" },
+
+                "programUsed": {
+                    "type": "object",
+                    "properties": {
+                        "author": { "type": "string" }
+                    }
+                }
             }
         }
     }

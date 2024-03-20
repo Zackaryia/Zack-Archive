@@ -2,28 +2,45 @@
     "lexicon": 1,
     "id": "com.zackaryia.atp.zs.alpha.content.defs",
     "defs": {
+        "folder": {
+            "type": "object",
+            "required": ["files"],
+            "properties": {
+                "files": {
+                    "type": "array",
+                    "items": { "type": "#file" }
+                },
+
+                "torrentInfo": { "type": "object", "ref": "#torrentInfo" }
+            }
+        },
+
         "file": {
             "type": "object",
             "description": "An archived file's information and how to retrieve it. Includes the file's torrent and Blob cid, if lob CID was generated.",
-            "required": ["filename", "mimeType", "size", "sha256", "blake3", "sha256Merkle", "btv2InfoDir", "torrentPeiceLayersV2"],
+            "required": ["filename", "mimeType", "size", "sha256", "blake3", "sha256Merkle"],
             "properties": {
                 "originalUri": { "type": "string", "format": "uri" },
 
                 "filename": { "type": "string" },
                 "mimeType": { "type": "string" },
                 "size": { "type": "integer" },
-                "peiceSize": { "type": "integer" },
 
                 "blob": { "type": "blob" },
 
                 "sha256": { "type": "bytes", "minLength": 32, "maxLength": 32 },
                 "blake3": { "type": "bytes", "minLength": 32, "maxLength": 32 },
-
                 "sha256Merkle": { "type": "bytes", "minLength": 32, "maxLength": 32 },
 
                 "btv2InfoDir": { "type": "bytes", "maxLength": 1024 },
                 "torrentPeiceLayersV2": { "type": "bytes", "maxLength": 8192 }
             }
+        },
+
+        "torrentInfo": {
+            "peiceLength": { "type": "integer" },
+            "bittorrentTwoInfoHash": { "type": "string" },
+            "torrentPeicesLayer": { "type": "bytes" }
         }
     }
 }
