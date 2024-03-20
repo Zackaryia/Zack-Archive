@@ -27,7 +27,7 @@
 
                     "archiveFolder": {
                         "type": "ref",
-                        "refs": "com.zackaryia.atp.zs.alpha.content.defs#folder"
+                        "ref": "com.zackaryia.atp.zs.alpha.content.defs#folder"
                     }
                 }
             }
