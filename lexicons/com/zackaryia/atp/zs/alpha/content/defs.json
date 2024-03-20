@@ -18,11 +18,11 @@
         "file": {
             "type": "object",
             "description": "An archived file's information and how to retrieve it. Includes the file's torrent and Blob cid, if lob CID was generated.",
-            "required": ["filename", "mimeType", "size", "sha256", "blake3", "sha256Merkle"],
+            "required": ["filepath", "mimeType", "size", "sha256", "blake3", "sha256Merkle"],
             "properties": {
                 "originalUri": { "type": "string", "format": "uri" },
 
-                "filename": { "type": "string" },
+                "filepath": { "type": "string" },
                 "mimeType": { "type": "string" },
                 "size": { "type": "integer" },
 
