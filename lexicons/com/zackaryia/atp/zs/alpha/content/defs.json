@@ -11,7 +11,7 @@
                     "items": { "type": "union", "refs": ["#file"] }
                 },
 
-                "torrentInfo": { "type": "object", "ref": "#torrentInfo" }
+                "torrentInfo": { "type": "ref", "ref": "#torrentInfo" }
             }
         },
 
