@@ -4,11 +4,11 @@
     "defs": {
         "folder": {
             "type": "object",
-            "required": ["files"],
+            "required": ["fileList"],
             "properties": {
-                "files": {
+                "fileList": {
                     "type": "array",
-                    "items": { "type": "#file" }
+                    "items": { "type": "union", "refs": ["#file"] }
                 },
 
                 "torrentInfo": { "type": "object", "ref": "#torrentInfo" }
