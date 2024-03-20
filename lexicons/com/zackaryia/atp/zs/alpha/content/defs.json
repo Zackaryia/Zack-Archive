@@ -38,9 +38,14 @@
         },
 
         "torrentInfo": {
-            "peiceLength": { "type": "integer" },
-            "bittorrentTwoInfoHash": { "type": "string" },
-            "torrentPeicesLayer": { "type": "bytes" }
+            "type": "object",
+            "description": "The needed information to connect to a torrent V2. Zack Archive does not use Torrent V1 at all",
+            "required": ["filename", "mimeType", "size", "sha256", "blake3", "sha256Merkle"],
+            "properties": {
+                "peiceLength": { "type": "integer" },
+                "infoHash": { "type": "string" },
+                "peiceHashes": { "type": "bytes" }
+            }
         }
     }
 }
