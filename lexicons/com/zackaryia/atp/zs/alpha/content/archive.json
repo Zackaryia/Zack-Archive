@@ -10,7 +10,7 @@
 
             "record": {
                 "type": "object",
-                "required": ["retrievalInfo", "content", "metadata", "contentData"],
+                "required": ["retrievalInfo", "contentId", "metadata", "archiveFolder"],
 
                 "properties": {
                     "retrievalInfo": {
