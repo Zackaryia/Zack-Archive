@@ -73,7 +73,7 @@
         "retrievalInfo": { 
             "type": "object",
             "description": "The metadata about how a Zack Archive was collected, includes program versions, options used, and anything else relevent.",
-            "required": ["startTime", "zaVersion", "programUsed"],
+            "required": ["startTime", "zaVersion"],
 
             "properties": {
                 "startTime": {
@@ -88,14 +88,7 @@
                     "description": "The end time the of the archive."
                 },
 
-                "zaVersion": { "type": "string" },
-
-                "programUsed": {
-                    "type": "object",
-                    "properties": {
-                        "author": { "type": "string" }
-                    }
-                }
+                "zaVersion": { "type": "string" }
             }
         }
     }
